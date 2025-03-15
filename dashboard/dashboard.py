@@ -7,7 +7,16 @@ import matplotlib.pyplot as plt
 st.title("📊 Dashboard E-Commerce")
 
 # Load dataset dari file yang diunggah
-all_df = pd.read_csv("all_data.csv")
+# all_df = pd.read_csv("all_data.csv")
+
+import os
+
+file_path = "submission/dashboard/all_data.csv"  # Sesuaikan path yang benar
+
+if os.path.exists(file_path):
+    all_df = pd.read_csv(file_path)
+else:
+    st.error(f"File tidak ditemukan di lokasi: {file_path}")
 
 # Sidebar untuk memilih analisis
 st.sidebar.header("📌 Pilih Analisis")
