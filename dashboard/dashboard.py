@@ -11,7 +11,7 @@ st.title("📊 Dashboard E-Commerce")
 
 import os
 
-file_path = "submission/dashboard/all_data.csv"  # Sesuaikan path yang benar
+file_path = "dashboard/all_data.csv"  # Sesuaikan path yang benar
 
 if os.path.exists(file_path):
     all_df = pd.read_csv(file_path)
