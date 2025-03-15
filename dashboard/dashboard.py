@@ -8,12 +8,31 @@ st.title("📊 Dashboard E-Commerce")
 
 # Load dataset dari file yang diunggah
 # all_df = pd.read_csv("all_data.csv")
-
+# Upload file CSV
 uploaded_file = st.file_uploader("Upload file CSV", type=["csv"])
 
 if uploaded_file is not None:
+    # Membaca file yang diunggah
     all_df = pd.read_csv(uploaded_file)
-    st.write(all_df.head())  # Menampilkan data awal
+
+    # Tampilkan beberapa baris data
+    st.write("Preview Data:", all_df.head())
+
+    # Pastikan 'product_category_name' ada sebelum digunakan
+    if "product_category_name" in all_df.columns:
+        categories = all_df["product_category_name"].unique()
+        selected_categories = st.sidebar.multiselect("Pilih Kategori Produk", categories)
+        
+        # Filter berdasarkan kategori yang dipilih
+        if selected_categories:
+            all_df = all_df[all_df["product_category_name"].isin(selected_categories)]
+        
+        # Tampilkan hasil filter
+        st.write("Data setelah difilter:", all_df.head())
+    else:
+        st.error("Kolom 'product_category_name' tidak ditemukan dalam dataset!")
+else:
+    st.warning("Silakan unggah file CSV terlebih dahulu.")
 
 
 # Sidebar untuk memilih analisis
