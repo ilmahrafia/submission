@@ -3,18 +3,16 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Set judul dashboard
-st.title("📊 Dashboard E-Commerce")
-
 import os
 
-# Cek apakah file ada di direktori saat ini
-print("Daftar file dalam direktori:", os.listdir())
+# Cek path kerja
+print("📂 Direktori kerja saat ini:", os.getcwd())
 
-if "all_data.csv" in os.listdir():
-    print("✅ File ditemukan!")
-else:
-    print("❌ File tidak ditemukan!")
+# Cek daftar file dalam direktori
+print("📄 Daftar file dalam direktori:", os.listdir())
+
+# Set judul dashboard
+st.title("📊 Dashboard E-Commerce")
 
 # Load dataset dari file yang diunggah
 all_df = pd.read_csv("all_data.csv")
