@@ -6,6 +6,16 @@ import matplotlib.pyplot as plt
 # Set judul dashboard
 st.title("📊 Dashboard E-Commerce")
 
+import os
+
+# Cek apakah file ada di direktori saat ini
+print("Daftar file dalam direktori:", os.listdir())
+
+if "all_data.csv" in os.listdir():
+    print("✅ File ditemukan!")
+else:
+    print("❌ File tidak ditemukan!")
+
 # Load dataset dari file yang diunggah
 all_df = pd.read_csv("all_data.csv")
 
