@@ -3,20 +3,17 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-import os
-
-# Cek path kerja
-print("📂 Direktori kerja saat ini:", os.getcwd())
-
-# Cek daftar file dalam direktori
-print("📄 Daftar file dalam direktori:", os.listdir())
-
 # Set judul dashboard
 st.title("📊 Dashboard E-Commerce")
 
 # Load dataset dari file yang diunggah
-all_df = pd.read_csv("all_data.csv")
+# all_df = pd.read_csv("all_data.csv")
 
+uploaded_file = st.file_uploader("Upload file CSV", type=["csv"])
+
+if uploaded_file is not None:
+    all_df = pd.read_csv(uploaded_file)
+    st.write(all_df.head())  # Menampilkan data awal
 
 
 # Sidebar untuk memilih analisis
